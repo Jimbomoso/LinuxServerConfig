@@ -197,5 +197,5 @@ Now we have everything set up that we need to to be able to login as user grader
 
 example:
 
-    ssh grader@3.82.136.145 -p 2200 -i ~/.ssh/linuxServerConfig
+    ssh grader@34.226.107.237 -p 2200 -i ~/.ssh/linuxServerConfig
 
