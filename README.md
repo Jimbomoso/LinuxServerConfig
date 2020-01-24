@@ -2,7 +2,7 @@
 Udacity Full-Stack Project
 
 ## Background
-This was a required project for my Udacity Full-Stack Program. The prior project was creating a full-stack CRUD app using vagrant, virtualbox, python, flask, postgresql. This project builds on that by taking that and configuring a linux server on LightSail to host the app.
+This was a required project for my Udacity Full-Stack Program. The prior project was creating a full-stack CRUD app using vagrant, virtualbox, python, flask, and postgresql. This project builds on that by taking that and configuring a linux server on LightSail to host the app.
 
 ## Steps
 
@@ -38,7 +38,7 @@ There should three options on the screen; profile, SSH keys and Advanced. Select
 Now there should be a download option. Click it and choose whether to keep or rename the file and where to save the file. (I kept the default and downloaded to my download file)
 
 Now open up your local terminal and change its permissions of the file by typing:
-> chmod 600 theNameOfTheFileYouDownloaded
+```sh chmod 600 theNameOfTheFileYouDownloaded```
 
 chmod 600 changes the file's permissions to owner can read and write
 
