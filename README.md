@@ -37,7 +37,9 @@ This was a required project for my Udacity Full-Stack Program. The prior project
 
 ### 2) Download aws ssh key
 
-* This is not intutive. At the top of the same screen click on the account dropdown and select account.
+This is not intutive.
+  
+* At the top of the same screen click on the account dropdown and select account.
 
 * There should three options on the screen; profile, SSH keys and Advanced. Select SSH keys.
 
@@ -45,25 +47,33 @@ This was a required project for my Udacity Full-Stack Program. The prior project
 
 * Now open up your local terminal and change its permissions of the file by typing:
 
-    chmod 600 theNameOfTheFileYouDownloaded
+        chmod 600 theNameOfTheFileYouDownloaded
 
 chmod 600 changes the file's permissions to owner can read and write
 
 example:
 
-`chmod 600 LightSailDefaultPrivateKey-us-east-1.pem`
+        chmod 600 LightSailDefaultPrivateKey-us-east-1.pem
 
 ### 3) Connecting to your instance
 
-I recommend connecting to the instance using your terminal and avoiding LightSail's option to connect in LightSail, which opens up a SSH connection in your browser, altogether. 
+I recommend connecting to the instance using your terminal and avoiding LightSail's option to connect in LightSail, which opens up a SSH connection in your browser, altogether.
 
-So in your terminal type:
-`ssh ubuntu@yourInstancesPublicIPAddress -p 22 -i ~/pathToYourPrivateKey`
+* So in your terminal type:
+
+    ssh ubuntu@yourInstancesPublicIPAddress -p 22 -i ~/pathToYourPrivateKey
 
 example:
-`ssh ubuntu@5.190.145.76 -p 22 -i ~/Downloads/LightSailDefaultPrivateKey-us.east-1.pem`
 
-If you get any sort of error in the terminal check that you have the correct filename and path. If the error persists you can start over by deleting the instance.  To do so go to your instance on the LightSail page, slick the elypsis button, select delete and confirm. At this point deleting the instance is no big deal.
+    ssh ubuntu@5.190.145.76 -p 22 -i ~/Downloads/LightSailDefaultPrivateKey-us.east-1.pem
+
+If you get any sort of error in the terminal check that you have the correct filename and path. If the error persists you can start over by deleting the instance.  To do so:
+
+* go to your instance on the LightSail page
+* click the elypsis button
+* select delete and confirm.
+  
+At this point deleting the instance is no big deal.
 
 ### 4) Install updates
 
