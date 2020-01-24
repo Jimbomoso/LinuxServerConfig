@@ -1,46 +1,51 @@
-# LinuxServerConfig
+
+# LinuxServerConfig 
+
 Udacity Full-Stack Project
 
-## Background
+## Background 
+
 This was a required project for my Udacity Full-Stack Program. The prior project was creating a full-stack CRUD app using vagrant, virtualbox, python, flask, and postgresql. This project builds on that by taking that and configuring a linux server on LightSail to host the app.
 
 ## Steps
 
 ### 1) Create a LightSail instance
 
- * The first thing you will need to do is a create an [aws account](http://aws.amazon.com). If you already have an Amazon account you can use those credentials to log in if you'd like or you can create an account from scratch.
+* The first thing you will need to do is a create an [aws account](http://aws.amazon.com). If you already have an Amazon account you can use those credentials to log in if you'd like or you can create an account from scratch.
 
- * Once logged in to aws locate the LightSail product. At the time of this writing it can be found by clicking the compute button under the explore our products section or by using  the search magnifying glass icon and searching for LightSail.
+* Once logged in to aws locate the LightSail product. At the time of this writing it can be found by clicking the compute button under the explore our products section or by using  the search magnifying glass icon and searching for LightSail.
 
- * On the main LightSail page click create new instance. This will bring you to another page where you will need to select from a bunch of options. For this project I defered to Udacity and selected:
+* On the main LightSail page click create new instance. This will bring you to another page where you will need to select from a bunch of options. For this project I defered to Udacity and selected:
 
- #### Platform: 
+#### Platform
+
     Linux
 
- #### Blueprint: 
+#### Blueprint
+
     OS Only
 
-Ubuntu 16.04 LTS
+* Ubuntu 16.04 LTS
 
-Then select a plan (I choose the cheapest which says the first month's free).
+* Then select a plan (I choose the cheapest which says the first month's free).
 
-Next you can choose whether to keep the suggested instance name or to create your own.
+* Next you can choose whether to keep the suggested instance name or to create your own.
 
-Next click create instance.
+* Next click create instance.
 
-You're instance will initially be grayed out and say pending. After not that long it will ungray and say running. 
+* You're instance will initially be grayed out and say pending. After not that long it will ungray and say running.
 
 ### 2) Download aws ssh key
 
-This is not intutive. At the top of the same screen click on the account dropdown and select account.
+* This is not intutive. At the top of the same screen click on the account dropdown and select account.
 
-There should three options on the screen; profile, SSH keys and Advanced. Select SSH keys.
+* There should three options on the screen; profile, SSH keys and Advanced. Select SSH keys.
 
-Now there should be a download option. Click it and choose whether to keep or rename the file and where to save the file. (I kept the default and downloaded to my download file)
+* Now there should be a download option. Click it and choose whether to keep or rename the file and where to save the file. (I kept the default and downloaded to my download file)
 
-Now open up your local terminal and change its permissions of the file by typing:
+* Now open up your local terminal and change its permissions of the file by typing:
 
-`chmod 600 theNameOfTheFileYouDownloaded`
+    chmod 600 theNameOfTheFileYouDownloaded
 
 chmod 600 changes the file's permissions to owner can read and write
 
