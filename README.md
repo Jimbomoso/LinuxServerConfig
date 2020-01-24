@@ -109,7 +109,86 @@ You can confirm by making sure grader is listed by
 
 * Exit the file with control+X, select yes to save and confirm the filename (do not change it).
 
-### 6) 
+### 6) Create SSH key pair for grader
 
+I am using a Mac. I'm not sure if the steps are different for other OSes. In this step you will use your computer's built in SSH key generator to generate a public and private key for the user, grader, that we created earlier.
 
+* In the terminal type:
 
+        ssh-keygen
+
+* I named the keys:
+
+        linuxServerConfig
+
+The keygen created two files:
+
+    linuxServerConfig (private key)
+    linuxServerConfig.pub (public key)
+
+* Make sure the private key is in your local machine's .ssh directory.  On mac this is /Users/mac/.ssh and they keys went here by default. I moved the public key to my downloads folder.
+  
+* In the connected terminal switch to the grader user
+
+        su - grader
+
+* Make a directory called .ssh and a file called authorized_keys
+  
+        mkdir .ssh
+        touch .ssh/authorized_keys
+
+* On your computer open the public key file. To do this I had to: find the file in my downloads folder, right click on it, choose Open With and choose VisualStudioCode to be able to read the file.
+
+* Once open, copy the contents of the public key file.
+  
+* Open the authorized_keys file in the terminal by typing:
+
+        sudo nano .ssh/authorized_keys
+
+* Paste the copied public key into the open file in the terminal then press control+X, yes to save and return to confirm the filename.
+  
+* Set the permission levels for the .ssh folder (read/right/execute for user) and authorized_keys file (read/write user, read group, read other)
+
+        chmod 700 .ssh
+        chmod 644 .ssh/authorized_keys
+
+### 7) Update the SSH port
+
+* Back in LightSail click the elypsis on your instance and select manage 
+  
+* From there scroll down to firewall and click add another
+  
+* Choose Custom/TCP/and enter 2200
+
+* Save
+
+### 8) Configure uncomplicated firewall
+
+* Open server config file back in the terminal and change port to 2200, then restart
+
+        sudo nano /etc/ssh/sshd_config
+        sudo service ssh restart
+
+* Configure firewall to allow only incoming connections to HTTP/NTP/2200 and enable the fireware.
+
+        sudo ufw allow 2200/tcp
+        sudo ufw allow www
+        sudo ufw allow 123/udp
+        sudo ufw deny 22
+        sudo ufw default deny incoming
+        sudo ufw default allow outgoing
+        sudo ufw enable
+
+* To check the status of firewall:
+
+        sudo ufw status
+
+### 9) SSH into grader user
+
+Now we have everything set up that we need to to be able to login as user grader whenever we want.  To login via the terminal:
+
+    ssh grader@thePublicIPAddressOfYourInstance -p 2200 -i ~/thePathOfYourConfigFile
+
+example:
+
+    ssh grader@3.82.136.145 -p 2200 -i ~/.ssh/linuxServerConfig
