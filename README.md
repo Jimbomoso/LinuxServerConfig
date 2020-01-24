@@ -38,22 +38,24 @@ There should three options on the screen; profile, SSH keys and Advanced. Select
 Now there should be a download option. Click it and choose whether to keep or rename the file and where to save the file. (I kept the default and downloaded to my download file)
 
 Now open up your local terminal and change its permissions of the file by typing:
-```sh chmod 600 theNameOfTheFileYouDownloaded```
+
+`chmod 600 theNameOfTheFileYouDownloaded`
 
 chmod 600 changes the file's permissions to owner can read and write
 
 example:
-> chmod 600 LightSailDefaultPrivateKey-us-east-1.pem
+
+`chmod 600 LightSailDefaultPrivateKey-us-east-1.pem`
 
 ### 3) Connecting to your instance
 
 I recommend connecting to the instance using your terminal and avoiding LightSail's option to connect in LightSail, which opens up a SSH connection in your browser, altogether. 
 
 So in your terminal type:
-> ssh ubuntu@yourInstancesPublicIPAddress -p 22 -i ~/pathToYourPrivateKey
+`ssh ubuntu@yourInstancesPublicIPAddress -p 22 -i ~/pathToYourPrivateKey`
 
 example:
-> ssh ubuntu@5.190.145.76 -p 22 -i ~/Downloads/LightSailDefaultPrivateKey-us.east-1.pem
+`ssh ubuntu@5.190.145.76 -p 22 -i ~/Downloads/LightSailDefaultPrivateKey-us.east-1.pem`
 
 If you get any sort of error in the terminal check that you have the correct filename and path. If the error persists you can start over by deleting the instance.  To do so go to your instance on the LightSail page, slick the elypsis button, select delete and confirm. At this point deleting the instance is no big deal.
 
@@ -61,9 +63,9 @@ If you get any sort of error in the terminal check that you have the correct fil
 
 Once connected to your instance in the terminal it is a good idea to install updates.
 
-> sudo apt-get update
+`sudo apt-get update`
 
-> sudo apt-get upgrade
+`sudo apt-get upgrade`
 
 You will get asked if it is OK to install stuff. You have to select yes to do so. Once complete another screen asked me something about whether to keep the local version or some other options. I choose to keep the local version.
 
@@ -71,19 +73,19 @@ You will get asked if it is OK to install stuff. You have to select yes to do so
 
 Create user
 
-> sudo adduser grader
+`sudo adduser grader`
 
 Create grader file in sudo
 
-> sudo touch /etc/sudoers.d/grader
+`sudo touch /etc/sudoers.d/grader`
 
 You can confirm by making sure grader is listed by
 
-> sudo ls /etc/doers.d
+`sudo ls /etc/doers.d`
 
 Open that file to add sudo access
 
-> sudo nano /etc/sudoers.d/grader
+`sudo nano /etc/sudoers.d/grader`
 
 The file should be blank. Enter: 
 
