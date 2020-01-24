@@ -5,7 +5,7 @@
 
     Port: 2200
 
-URL: [http://34.226.107.237]
+URL: http://34.226.107.237
 
 Udacity Full-Stack Project
 
