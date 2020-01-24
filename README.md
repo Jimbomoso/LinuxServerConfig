@@ -2,7 +2,7 @@
 Udacity Full-Stack Project
 
 ## Background
-This was a required project for my Udacity Full-Stack Program. The prior project was creating a full-stack CURD app using vagrant, virtualbox, python, flask, postgresql. This project builds on that by taking that and configuring a linux server on LightSail to host the app.
+This was a required project for my Udacity Full-Stack Program. The prior project was creating a full-stack CRUD app using vagrant, virtualbox, python, flask, postgresql. This project builds on that by taking that and configuring a linux server on LightSail to host the app.
 
 ## Steps
 
