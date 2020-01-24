@@ -8,18 +8,19 @@ This was a required project for my Udacity Full-Stack Program. The prior project
 
 ### 1) Create a LightSail instance
 
- The first thing you will need to do is a create an [aws account](http://aws.amazon.com). If you already have an Amazon account you can use those credentials to log in if you'd like or you can create an account from scratch.
+ * The first thing you will need to do is a create an [aws account](http://aws.amazon.com). If you already have an Amazon account you can use those credentials to log in if you'd like or you can create an account from scratch.
 
- Once logged in to aws locate the LightSail product. At the time of this writing it can be found by clicking the compute button under the explore our products section or by using  the search magnifying glass icon and searching for LightSail.
+ * Once logged in to aws locate the LightSail product. At the time of this writing it can be found by clicking the compute button under the explore our products section or by using  the search magnifying glass icon and searching for LightSail.
 
- On the main LightSail page click create new instance. This will bring you to another page where you will need to select from a bunch of options. For this project I defered to Udacity and selected:
+ * On the main LightSail page click create new instance. This will bring you to another page where you will need to select from a bunch of options. For this project I defered to Udacity and selected:
 
- > Platform: 
- * Linux
+ #### Platform: 
+    Linux
 
- > Blueprint: 
- * OS Only
- * Ubuntu 16.04 LTS
+ #### Blueprint: 
+    OS Only
+
+Ubuntu 16.04 LTS
 
 Then select a plan (I choose the cheapest which says the first month's free).
 
