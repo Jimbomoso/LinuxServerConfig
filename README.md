@@ -7,6 +7,10 @@ Udacity Full-Stack Project
 
 This was a required project for my Udacity Full-Stack Program. The prior project was creating a full-stack CRUD app using vagrant, virtualbox, python, flask, and postgresql. This project builds on that by taking that and configuring a linux server on LightSail to host the app.
 
+    App IP address: 34.226.107.237
+
+    Port : 2200
+
 ## Steps
 
 ### 1) Create a LightSail instance
@@ -192,3 +196,4 @@ Now we have everything set up that we need to to be able to login as user grader
 example:
 
     ssh grader@3.82.136.145 -p 2200 -i ~/.ssh/linuxServerConfig
+
