@@ -53,7 +53,7 @@ chmod 600 changes the file's permissions to owner can read and write
 
 example:
 
-        chmod 600 LightSailDefaultPrivateKey-us-east-1.pem
+    chmod 600 LightSailDefaultPrivateKey-us-east-1.pem
 
 ### 3) Connecting to your instance
 
@@ -61,11 +61,11 @@ I recommend connecting to the instance using your terminal and avoiding LightSai
 
 * So in your terminal type:
 
-    ssh ubuntu@yourInstancesPublicIPAddress -p 22 -i ~/pathToYourPrivateKey
+        ssh ubuntu@yourInstancesPublicIPAddress -p 22 -i ~/pathToYourPrivateKey
 
-example:
+    example:
 
-    ssh ubuntu@5.190.145.76 -p 22 -i ~/Downloads/LightSailDefaultPrivateKey-us.east-1.pem
+        ssh ubuntu@5.190.145.76 -p 22 -i ~/Downloads/LightSailDefaultPrivateKey-us.east-1.pem
 
 If you get any sort of error in the terminal check that you have the correct filename and path. If the error persists you can start over by deleting the instance.  To do so:
 
@@ -79,35 +79,35 @@ At this point deleting the instance is no big deal.
 
 Once connected to your instance in the terminal it is a good idea to install updates.
 
-`sudo apt-get update`
+    sudo apt-get update
 
-`sudo apt-get upgrade`
+    sudo apt-get upgrade
 
 You will get asked if it is OK to install stuff. You have to select yes to do so. Once complete another screen asked me something about whether to keep the local version or some other options. I choose to keep the local version.
 
 ### 5) Create/setup user grader
 
-Create user
+* Create user
 
-`sudo adduser grader`
+        sudo adduser grader
 
-Create grader file in sudo
+* Create grader file in sudo
 
-`sudo touch /etc/sudoers.d/grader`
+        sudo touch /etc/sudoers.d/grader
 
 You can confirm by making sure grader is listed by
 
-`sudo ls /etc/doers.d`
+    sudo ls /etc/doers.d
 
-Open that file to add sudo access
+* Open that file to add sudo access
 
-`sudo nano /etc/sudoers.d/grader`
+        sudo nano /etc/sudoers.d/grader
 
-The file should be blank. Enter: 
+* The file should be blank. Enter: 
 
-> grader ALL=(ALL) NOPASSWD:ALL
+    grader ALL=(ALL) NOPASSWD:ALL
 
-Exit the file with control+X, select yes to save and confirm the filename (do not change it).
+* Exit the file with control+X, select yes to save and confirm the filename (do not change it).
 
 ### 6) 
 
