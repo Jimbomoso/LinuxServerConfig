@@ -91,6 +91,21 @@ Once connected to your instance in the terminal it is a good idea to install upd
 
 You will get asked if it is OK to install stuff. You have to select yes to do so. Once complete another screen asked me something about whether to keep the local version or some other options. I choose to keep the local version.
 
+* Automatically install updates
+
+        sudo apt-get install unattended-upgrades 
+        sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
+
+* Add these lines to the now open file's existing two lines
+
+    APT::Periodic::Download-Upgradable-Packages "1";
+    APT::Periodic::AutocleanInterval "7";
+
+* Enable and restart apache 
+  
+        sudo dpkg-reconfigure --priority=low unattended-upgrades
+        sudo service apache2 restart
+
 ### 5) Create/setup user grader
 
 * Create user
@@ -199,3 +214,116 @@ example:
 
     ssh grader@34.226.107.237 -p 2200 -i ~/.ssh/linuxServerConfig
 
+### 10) Configure timezone
+
+        sudo cat /etc/timezone
+
+* if not already UTC, set to UTC
+
+        sudo dpkg-reconfigure tzdata
+
+### 11) Install/configure Apache and wsgi package
+
+     sudo apt-get install libapache2-mod-wsgi
+     sudo apt-get install apache2
+
+### 12) Install/configure PostsgreSQL
+
+    sudo apt-get install postgresql
+    sudo cat /etc/postgresql/9.5/main/pg_hba.conf
+    sudo service apache2 restart
+
+* Create database
+
+        sudo su - postgres
+        CREATE USER catalog WITH PASSWORD 'catalog';
+        \du
+        CREATE DATABASE catalog;
+        \l
+
+### 13) Deploy app from git and create setup on server
+
+        cd /var/www
+        sudo mkdir FLaskApp
+        cd FlaskApp
+        sudo git clone (URI for your repo)
+        sudo apt install tree
+        tree
+
+### 14) Set up virtual environment and install dependencies 
+
+        sudo apt-get install python3-pip
+        sudo apt-get install python-virtualenv
+        sudo virtualenv -p python3 venv
+        pip install httplib2
+        pip install python3 requests
+        pip install python3 oauth2client
+        pip install python3 sqlalchemy
+        pip install flask
+        sudo apt-get install libpq-dev
+        pip install python3 psycopg2
+
+### 15) Enable FlaskApp
+
+* Open configuration file
+
+        sudo nano /etc/apache2/sites-available/FlaskApp.conf 
+
+* Change contents to: 
+
+        sudo nano /etc/apache2/sites-available/FlaskApp.conf
+
+        <VirtualHost *:80>
+            ServerName 52.26.30.44
+            ServerAdmin sarithakamath24@gmail.com
+            WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+            <Directory /var/www/FlaskApp/ItemCatalog/>
+                Order allow,deny
+                Allow from all
+            </Directory>
+            Alias /static /var/www/FlaskApp/ItemCatalog/static
+            <Directory /var/www/FlaskApp/ItemCatalog/static/>
+                Order allow,deny
+                Allow from all
+            </Directory>
+            ErrorLog ${APACHE_LOG_DIR}/error.log
+            LogLevel warn
+            CustomLog ${APACHE_LOG_DIR}/access.log combined
+            </VirtualHost>
+
+* Enable
+
+        sudo a2ensite FlaskApp
+
+* Create the .wsgi (said whiskey) file
+
+        cd /var/www/FlaskApp/itemCatalog
+        sudo nano flaskapp.wsgi
+
+* Add the following to the contents:
+
+        #!/usr/bin/python3
+        import sys
+        import logging
+        logging.basicConfig(stream=sys.stderr)
+        sys.path.insert(0,"/var/www/itemCatalog/")
+
+        from application import app as application
+        application.secret_key = 'super_secret_key'
+
+* Restart apache2
+
+        sudo service apache2 restart
+
+* Change apache2 site
+
+        sudo a2dissite 000-default
+        service apache2 restart
+
+### Resources
+
+    https://help.ubuntu.com/
+    https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+    https://www.postgresql.org/docs/current/static/sql-createuser.html
+    http://flask.pocoo.org/docs/0.12/
+    Udacity mentor Michael A.
